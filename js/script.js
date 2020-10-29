@@ -59,6 +59,7 @@ function insert_comment()
                     data:{id:id , comment:comment},
                     success:function (data) {
 
+                        
                        get_comment(data);
                
                     }
@@ -72,5 +73,25 @@ function insert_comment()
 
 
 }
+
+function get_comment(data)
+{
+    var id = data;
+        $.ajax(
+             {
+                 url:"select.php",
+                 method:"POST",
+                 data:{id:id},
+                 success:function (data) {
+
+                     $("#commentSection"+ id).html(data);
+                     
+                 }
+
+            });
+
+    
+}
+
 
 
