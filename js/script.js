@@ -3,6 +3,7 @@ $(document).ready(function(){
 
    
     get_comments();
+    insert_comment();
     
    
 
@@ -34,4 +35,42 @@ function get_comments()
 
     });
 }
+
+function insert_comment()
+{
+    $(document).on('click' , '#addComment' , function()
+    {
+
+        var id= $(this).attr('data-id');
+        var comment = $('#comment'+ id).val();
+        
+        if( comment == "")
+        {
+            $("#commentStatuts"+ id).html('veuillez remplir le champ svp');
+
+            
+
+        }else{
+
+            $.ajax(
+                {
+                    url:"insert.php",
+                    method:"POST",
+                    data:{id:id , comment:comment},
+                    success:function (data) {
+
+                       get_comment(data);
+               
+                    }
+   
+               });
+   
+
+        }
+       
+    });
+
+
+}
+
 
