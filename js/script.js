@@ -4,12 +4,9 @@ $(document).ready(function(){
    
     get_comments();
     insert_comment();
-    
-   
+    hide_comments();
 
 });
-
-
 
 
 
@@ -59,7 +56,7 @@ function insert_comment()
                     data:{id:id , comment:comment},
                     success:function (data) {
 
-                        
+
                        get_comment(data);
                
                     }
@@ -92,6 +89,20 @@ function get_comment(data)
 
     
 }
+
+function hide_comments()
+{
+    $(document).on('click' , '#btn_hide_comments' , function()
+    {
+
+         var id= $(this).attr('data-id');
+
+         $("#commentSection"+ id).html(" ");
+        
+
+    });
+}
+
 
 
 
