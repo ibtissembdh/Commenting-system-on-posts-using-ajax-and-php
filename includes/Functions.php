@@ -40,3 +40,73 @@
     }
     
 
+    function select_comments()
+    {
+        
+       
+        global $db;
+        $id = $_POST['id'];
+
+        $data =' 
+                    
+                <div class="input-group mb-3">
+                    <input type="text" name= "comment" id="comment'.$id.'" class="form-control m-input" placeholder=" entrer your comment" autocomplete="on" > 
+                    <div class="input-group-append">
+                            <button id="addComment" type="button" class="btn btn-primary" data-id="'.$id.'">comment</button>
+                    </div>
+                    <p id="commentStatuts'.$id.'" > </p>
+                </div>
+               
+                    
+
+            
+            
+            ';
+            
+        $comments = $db->query("SELECT id, comment, comment_date  FROM comments WHERE post_id = '$id' ORDER BY comment_date DESC");
+
+            if( $comments )
+            {
+                $data .='
+                    <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">comment</th>
+                            <th scope="col">comment date</th>
+                        </tr>
+                    </thead>
+                        
+                    <tbody>
+                
+                ';
+                    
+                foreach( $comments as $comment)
+                {
+                    $data .=' 
+                        <tr>
+                                <th scope="row">'.htmlspecialchars($comment["id"],ENT_QUOTES).' </th>
+                                <td>'.htmlspecialchars($comment["comment"],ENT_QUOTES).'</td>
+                                <td>'.htmlspecialchars($comment["comment_date"],ENT_QUOTES).'</td>
+                        </tr>
+                         ';
+                }
+
+                
+                $data .='
+                        </tbody>
+                        </table>' ;
+
+            }else {
+                $data .='  <div> no comment add </div>  ';
+
+            }
+        
+           
+
+
+
+        echo $data;
+     
+
+    }
