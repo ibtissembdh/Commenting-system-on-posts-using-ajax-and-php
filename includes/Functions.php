@@ -110,3 +110,27 @@
      
 
     }
+
+
+    function insert()
+    {
+        global $db ;
+
+        $id = htmlspecialchars($_POST['id'] );
+
+        $comment = htmlspecialchars($_POST['comment']);
+
+        $db->Query("INSERT INTO comments(post_id, comment, comment_date) VALUES('$id',' $comment ', NOW())");
+
+    
+         echo $id;
+
+       
+    }
+
+    
+
+
+
+
+   
