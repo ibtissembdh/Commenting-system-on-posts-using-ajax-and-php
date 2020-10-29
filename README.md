@@ -10,3 +10,6 @@
       associated with the post
       * I can make a new comment.
       * user authentication is not used.
+      
+   * exemple 
+   ![image](https://github.com/ibtissembdh/Commenting-system-on-posts-using-ajax-and-php/blob/main/blog%20screenshots/Capture.PNG)
