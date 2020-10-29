@@ -6,7 +6,7 @@
 
       * I can have the list of posts by just displaying the number of comments in front of each
       post.
-      * by clicking on a post I must reach the detail of the post and all the comments
+      * by clicking on comment button I must reach  all the comments
       associated with the post
-      * in the post page I can make a new comment.
+      * I can make a new comment.
       * user authentication is not used.
